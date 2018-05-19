@@ -437,6 +437,6 @@
 #cmakedefine IS_OSX
 #cmakedefine IS_LINUX
 #cmakedefine IS_FREEBSD
-#cmakedefine BUILD_IPHONE
+#cmakedefine BUILD_IOS
 
 #endif

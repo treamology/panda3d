@@ -374,16 +374,6 @@ mark_as_advanced(DO_MEMORY_USAGE SIMULATE_NETWORK_DELAY
 # This section relates to mobile-device/phone support and options
 #
 
-# iPhone support
-set(BUILD_IPHONE "" CACHE STRING
-  "Panda contains some experimental code to compile for IPhone.  This
-requires the Apple IPhone SDK, which is currently only available
-for OS X platforms.  Set this to either 'iPhoneSimulator' or
-'iPhoneOS'.  Note that this is still *experimental* and incomplete!
-Don't enable this unless you know what you're doing!")
-set_property(CACHE BUILD_IPHONE PROPERTY STRINGS "" iPhoneSimulator iPhoneOS)
-
-
 # Android support
 option(BUILD_ANDROID
   "Panda contains some experimental code to compile for Android.
