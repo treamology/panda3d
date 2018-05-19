@@ -491,18 +491,18 @@ but is many times faster." ${IS_NOT_MINSIZE_BUILD})
 
 # TODO: OpenGL ES
 # Is OpenGL ES 1.x installed, and where?
-#find_package(OpenGLES)
+# find_package(OpenGLES)
 
-#package_option(GLES
+# package_option(GLES
 #  "Enable OpenGL ES 1.x support, a minimal subset of
-#OpenGL for mobile devices.")
+# OpenGL for mobile devices.")
 
 # Is OpenGL ES 2.x installed, and where?
-#find_package(OpenGLES)
-
-#package_option(GLES2
-#  "Enable OpenGL ES 2.x support, a version of OpenGL ES but without
-#fixed-function pipeline - everything is programmable there.")
+find_package(OPENGLES2 QUIET)
+set(GLES2_FOUND ${OPENGLES2_FOUND})
+package_option(GLES2
+ "Enable OpenGL ES 2.x support, a version of OpenGL ES but without
+fixed-function pipeline - everything is programmable there.")
 
 # Is EGL installed, and where?
 #package_option(EGL
