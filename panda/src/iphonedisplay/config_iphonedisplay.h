@@ -11,8 +11,8 @@
  * @date 2009-04-08
  */
 
-#ifndef CONFIG_IPHONEDISPLAY_H
-#define CONFIG_IPHONEDISPLAY_H
+#ifndef CONFIG_IOSDISPLAY_H
+#define CONFIG_IOSDISPLAY_H
 
 #include "pandabase.h"
 #include "notifyCategoryProxy.h"
@@ -26,4 +26,4 @@ extern ConfigVariableBool iphone_autorotate_view;
 extern EXPCL_MISC void init_libiphonedisplay();
 extern "C" EXPCL_MISC int get_pipe_type_iphonedisplay();
 
-#endif  // CONFIG_IPHONEDISPLAY_H
+#endif  // CONFIG_IOSDISPLAY_H

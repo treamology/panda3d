@@ -31,7 +31,8 @@ set(P3LINMATH_HEADERS
   lvecBase2_ext.h lvecBase3_ext.h lvecBase4_ext.h
   lpoint2_ext.h lpoint3_ext.h lpoint4_ext.h
   lvector2_ext.h lvector3_ext.h lvector4_ext.h
-  mathNumbers.h mathNumbers.I
+  mathNumbers.h mathNumbers.I intnames.h lmat_ops.h
+  lmat_ops_src.h lmat_ops_src.I
 )
 
 set(P3LINMATH_SOURCES

@@ -11,8 +11,8 @@
  * @date 2009-04-08
  */
 
-#ifndef CONFIG_IPHONE_H
-#define CONFIG_IPHONE_H
+#ifndef CONFIG_IOS_H
+#define CONFIG_IOS_H
 
 #include "pandabase.h"
 #include "notifyCategoryProxy.h"
@@ -23,4 +23,4 @@ NotifyCategoryDecl(iphone, EXPCL_MISC, EXPTP_MISC);
 
 extern EXPCL_MISC void init_libiphone();
 
-#endif  // CONFIG_IPHONE_H
+#endif  // CONFIG_IOS_H

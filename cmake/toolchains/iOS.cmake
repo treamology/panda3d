@@ -1,4 +1,4 @@
-set(BUILD_IOS YES)
+set(IOS YES)
 
 # Since we're building a library, we won't be needing codesigning
 set(CMAKE_MACOSX_BUNDLE YES)

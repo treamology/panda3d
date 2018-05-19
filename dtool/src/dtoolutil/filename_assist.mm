@@ -18,7 +18,7 @@
 #include <strings.h>
 #include <Foundation/Foundation.h>
 
-#ifndef BUILD_IOS
+#ifndef IOS
 #include <AppKit/AppKit.h>
 #endif
 
@@ -44,7 +44,7 @@ call_NSSearchPathForDirectories(NSSearchPathDirectory dirkey, NSSearchPathDomain
   // Ensure that Carbon has been initialized, and that we have an auto-release
   // pool.  Unfortunately, this very important function doesn't exist on the
   // IPhone.
-#ifndef BUILD_IOS
+#ifndef IOS
   NSApplicationLoad();
 #endif
 
@@ -65,7 +65,7 @@ call_NSSearchPathForDirectories(NSSearchPathDirectory dirkey, NSSearchPathDomain
  */
 string
 get_osx_home_directory() {
-#ifndef BUILD_IOS
+#ifndef IOS
   NSApplicationLoad();
 #endif
 
@@ -83,7 +83,7 @@ get_osx_home_directory() {
  */
 string
 get_osx_temp_directory() {
-#ifndef BUILD_IOS
+#ifndef IOS
   NSApplicationLoad();
 #endif
 

@@ -65,6 +65,10 @@
 // Some implementations (Arch Linux) set this in glext.h
 typedef char GLchar;
 
+typedef int64_t khronos_int64_t;
+typedef uint64_t khronos_uint64_t;
+
+#define GL_GLEXT_PROTOTYPES
 #include "panda_esglext.h"
 
 // This helps to keep the source clean of hundreds of ifdefs.

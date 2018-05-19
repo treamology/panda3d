@@ -11,7 +11,7 @@
  * @date 2009-04-10
  */
 
-#import "EAGLView.h"
+#import "eaglView.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import <OpenGLES/EAGLDrawable.h>

@@ -11,7 +11,7 @@
 
 #include "pandabase.h"
 
-#if defined(IS_OSX) && !defined(BUILD_IOS) && defined(HAVE_CARBON) && !__LP64__
+#if defined(IS_OSX) && !defined(IOS) && defined(HAVE_CARBON) && !__LP64__
 
 #include <Carbon/Carbon.h>
 #include <Cocoa/Cocoa.h>

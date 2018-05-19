@@ -273,7 +273,7 @@ close_window() {
 
 // release_system_resources(false);
   _gsg.clear();
-  _active = false;
+  set_active(false);
   GraphicsWindow::close_window();
 }
 

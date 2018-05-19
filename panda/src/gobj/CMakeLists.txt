@@ -43,6 +43,8 @@ set(P3GOBJ_HEADERS
   perspectiveLens.I perspectiveLens.h
   preparedGraphicsObjects.I preparedGraphicsObjects.h
   queryContext.I queryContext.h
+  samplerState.I samplerState.h
+  samplerContext.I samplerContext.h
   savedContext.I savedContext.h
   shader.I shader.h
   shaderBuffer.h shaderBuffer.I

@@ -11,6 +11,7 @@ set(P3DTOOLBASE_HEADERS
     atomicAdjustI386Impl.h atomicAdjustI386Impl.I
     atomicAdjustPosixImpl.h atomicAdjustPosixImpl.I
     atomicAdjustWin32Impl.h atomicAdjustWin32Impl.I
+    atomicAdjustGccImpl.h atomicAdjustGccImpl.I
     cmath.I cmath.h
     deletedBufferChain.h deletedBufferChain.I
     deletedChain.h deletedChain.T

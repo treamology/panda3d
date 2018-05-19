@@ -11,8 +11,8 @@
  * @date 2009-04-08
  */
 
-#ifndef IPHONEGRAPHICSSTATEGUARDIAN_H
-#define IPHONEGRAPHICSSTATEGUARDIAN_H
+#ifndef IOSGRAPHICSSTATEGUARDIAN_H
+#define IOSGRAPHICSSTATEGUARDIAN_H
 
 #include "pandabase.h"
 #include "glesgsg.h"

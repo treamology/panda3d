@@ -1,0 +1,30 @@
+if(NOT APPLE OR NOT IOS)
+  return()
+endif()
+
+set(P3IOSDISPLAY_HEADERS
+    config_iphonedisplay.h
+    iPhoneGraphicsPipe.h
+    iPhoneGraphicsWindow.h iPhoneGraphicsWindow.I
+    iPhoneGraphicsStateGuardian.h
+    viewController.h
+    eaglView.h)
+
+set(P3IOSDISPLAY_SOURCES
+    config_iphonedisplay.mm
+    iPhoneGraphicsPipe.mm
+    iPhoneGraphicsWindow.mm
+    iPhoneGraphicsStateGuardian.mm
+    viewController.mm
+    eaglView.mm)
+
+composite_sources(p3iphonedisplay P3IOSDISPLAY_SOURCES)
+add_component_library(p3iphonedisplay ${P3IOSDISPLAY_HEADERS} ${P3IOSDISPLAY_SOURCES})
+set_target_properties(p3iphonedisplay PROPERTIES DEFINE_SYMBOL BUILDING_PANDAGLES COMPILE_FLAGS "-ObjC++")
+target_link_libraries(p3iphonedisplay p3display p3putil p3glesgsg)
+
+# Frameworks:
+# find_library(APPLICATIONSERVICES_LIBRARY ApplicationServices)
+find_library(QUARTZCORE_LIBRARY QuartzCore)
+find_library(UIKIT_LIBRARY UIKit)
+target_link_libraries(p3iphonedisplay ${UIKIT_LIBRARY} ${QUARTZCORE_LIBRARY})

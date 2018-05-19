@@ -11,8 +11,8 @@
  * @date 2009-04-08
  */
 
-#ifndef IPHONEGRAPHICSWINDOW_H
-#define IPHONEGRAPHICSWINDOW_H
+#ifndef IOSGRAPHICSWINDOW_H
+#define IOSGRAPHICSWINDOW_H
 
 #include "pandabase.h"
 #include "graphicsWindow.h"

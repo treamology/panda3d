@@ -1,5 +1,6 @@
 set(P3PNMIMAGE_HEADERS
   config_pnmimage.h
+  convert_srgb.I convert_srgb.h
   pfmFile.I pfmFile.h
   pnmbitio.h
   pnmBrush.h pnmBrush.I

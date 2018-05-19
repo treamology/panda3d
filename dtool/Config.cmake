@@ -489,13 +489,12 @@ that is built into Panda. TinyDisplay is not as full-featured as Mesa
 but is many times faster." ${IS_NOT_MINSIZE_BUILD})
 
 
-# TODO: OpenGL ES
 # Is OpenGL ES 1.x installed, and where?
-# find_package(OpenGLES)
-
-# package_option(GLES
-#  "Enable OpenGL ES 1.x support, a minimal subset of
-# OpenGL for mobile devices.")
+find_package(OpenGLES QUIET)
+set(GLES_FOUND ${OPENGLES_FOUND})
+package_option(GLES
+ "Enable OpenGL ES 1.x support, a minimal subset of
+OpenGL for mobile devices.")
 
 # Is OpenGL ES 2.x installed, and where?
 find_package(OPENGLES2 QUIET)

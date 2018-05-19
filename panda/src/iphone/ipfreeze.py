@@ -53,7 +53,7 @@ if __name__ == '__main__':
     env = 'env MACOSX_DEPLOYMENT_TARGET=10.5 PATH="%s/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"' % (dev)
     cc = '%s %s/usr/bin/g++-4.0' % (env, dev)
     sysroot = '-isysroot %s/SDKs/%s%s.sdk' % (dev, platform, version)
-    cflags = '-D__IPHONE_OS_VERSION_MIN_REQUIRED=20000 %s' % (sysroot)
+    cflags = '-D__IOS_OS_VERSION_MIN_REQUIRED=20000 %s' % (sysroot)
     if link_all_static:
         cflags += ' -DLINK_ALL_STATIC'
     arch = ''

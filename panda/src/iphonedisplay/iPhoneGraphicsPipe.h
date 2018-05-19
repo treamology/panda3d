@@ -11,8 +11,8 @@
  * @date 2009-04-08
  */
 
-#ifndef IPHONEGRAPHICSPIPE_H
-#define IPHONEGRAPHICSPIPE_H
+#ifndef IOSGRAPHICSPIPE_H
+#define IOSGRAPHICSPIPE_H
 
 #include "pandabase.h"
 #include "graphicsPipe.h"
@@ -26,7 +26,7 @@ class PNMImage;
 
 /**
  * This graphics pipe represents the interface for creating OpenGL graphics
- * windows on the various IPHONE's.
+ * windows on the various IOS's.
  */
 class EXPCL_MISC IPhoneGraphicsPipe : public GraphicsPipe {
 public:

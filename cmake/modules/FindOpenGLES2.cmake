@@ -5,10 +5,8 @@
 #   find_package(OPENGLES2 [REQUIRED] [QUIET])
 #
 # Once done this will define:
-#   OPENGLES2_FOUND       - true if fftw is found on the system
-#   OPENGLES2_INCLUDE_DIR - the fftw include directory
-#   OPENGLES2_LIBRARY_DIR - the fftw library directory
-#   OPENGLES2_LIBRARY     - the path to the library binary
+#   OPENGLES2_FOUND       - true if OpenGLES2 is found on the system
+#   OPENGLES2_INCLUDE_DIR - the OpenGLES2 include directory
 #
 # The following variables will be checked by the function
 #   OPENGLES2_ROOT - if set, the libraries are exclusively searched under this path
