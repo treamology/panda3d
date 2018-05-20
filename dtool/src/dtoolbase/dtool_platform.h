@@ -31,15 +31,23 @@
 #define DTOOL_PLATFORM "win_i386"
 
 #elif defined(__APPLE__)
+
 #if defined(IOS)
-#define DTOOL_PLATFORM "iphone"
-#elif defined(__ppc__)
+#if defined(__x86_64)
+#define DTOOL_PLATFORM "ios_amd64"
+#elif defined(__aarch64__)
+#define DTOOL_PLATFORM "ios_aarch64"
+#endif // defined(__x86_64)
+
+#else // defined(IOS)
+#if defined(__ppc__)
 #define DTOOL_PLATFORM "osx_ppc"
 #elif defined(__i386__)
 #define DTOOL_PLATFORM "osx_i386"
 #elif defined(__x86_64)
 #define DTOOL_PLATFORM "osx_amd64"
-#endif
+#endif // defined(__ppc__)
+#endif // defined(IOS)
 
 #elif defined(__FreeBSD__)
 #if defined(__x86_64)
