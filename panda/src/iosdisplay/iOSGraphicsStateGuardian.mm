@@ -6,12 +6,12 @@
  * license.  You should have received a copy of this license along
  * with this source code in a file named "LICENSE."
  *
- * @file iPhoneGraphicsStateGuardian.mm
+ * @file iOSGraphicsStateGuardian.mm
  * @author drose
  * @date 2009-04-08
  */
 
-#include "iPhoneGraphicsStateGuardian.h"
+#include "iOSGraphicsStateGuardian.h"
 #include "string_utils.h"
 #include "config_iosdisplay.h"
 #include "depthWriteAttrib.h"
@@ -20,7 +20,7 @@
 #include "pnmImage.h"
 #include "glesgsg.h"
 
-TypeHandle IPhoneGraphicsStateGuardian::_type_handle;
+TypeHandle IOSGraphicsStateGuardian::_type_handle;
 
 /**
  * Returns the pointer to the GL extension function with the indicated name.
@@ -28,7 +28,7 @@ TypeHandle IPhoneGraphicsStateGuardian::_type_handle;
  * extension is defined in the OpenGL runtime prior to calling this; it is an
  * error to call this for a function that is not defined.
  */
-void *IPhoneGraphicsStateGuardian::
+void *IOSGraphicsStateGuardian::
 get_extension_func(const char *prefix, const char *name) {
   return NULL;
 }
@@ -36,9 +36,9 @@ get_extension_func(const char *prefix, const char *name) {
 /**
  *
  */
-IPhoneGraphicsStateGuardian::
-IPhoneGraphicsStateGuardian(GraphicsEngine *engine, GraphicsPipe *pipe,
-                         IPhoneGraphicsStateGuardian *share_with) :
+IOSGraphicsStateGuardian::
+IOSGraphicsStateGuardian(GraphicsEngine *engine, GraphicsPipe *pipe,
+                         IOSGraphicsStateGuardian *share_with) :
   GLESGraphicsStateGuardian(engine, pipe),
   _share_with(share_with)
 {
@@ -48,14 +48,14 @@ IPhoneGraphicsStateGuardian(GraphicsEngine *engine, GraphicsPipe *pipe,
 /**
  *
  */
-IPhoneGraphicsStateGuardian::
-~IPhoneGraphicsStateGuardian() {
+IOSGraphicsStateGuardian::
+~IOSGraphicsStateGuardian() {
 }
 
 /**
  * Resets all internal state as if the gsg were newly created.
  */
-void IPhoneGraphicsStateGuardian::
+void IOSGraphicsStateGuardian::
 reset() {
   GLESGraphicsStateGuardian::reset();
 }
@@ -64,6 +64,6 @@ reset() {
  * Fills in the fb_props member with the appropriate values according to the
  * chosen pixel format.
  */
-void IPhoneGraphicsStateGuardian::
+void IOSGraphicsStateGuardian::
 describe_pixel_format(FrameBufferProperties &fb_props) {
 }

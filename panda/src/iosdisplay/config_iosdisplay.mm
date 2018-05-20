@@ -13,7 +13,7 @@
 
 #include "config_iosdisplay.h"
 #include "iOSGraphicsPipe.h"
-#include "iPhoneGraphicsStateGuardian.h"
+#include "iOSGraphicsStateGuardian.h"
 #include "iPhoneGraphicsWindow.h"
 
 #include "graphicsPipeSelection.h"
@@ -51,7 +51,7 @@ init_libiosdisplay() {
 
   IOSGraphicsPipe::init_type();
   IPhoneGraphicsWindow::init_type();
-  IPhoneGraphicsStateGuardian::init_type();
+  IOSGraphicsStateGuardian::init_type();
 
   GraphicsPipeSelection *selection = GraphicsPipeSelection::get_global_ptr();
   selection->add_pipe_type(IOSGraphicsPipe::get_class_type(), IOSGraphicsPipe::pipe_constructor);

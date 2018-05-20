@@ -6,7 +6,7 @@
  * license.  You should have received a copy of this license along
  * with this source code in a file named "LICENSE."
  *
- * @file iPhoneGraphicsStateGuardian.h
+ * @file iOSGraphicsStateGuardian.h
  * @author drose
  * @date 2009-04-08
  */
@@ -24,11 +24,11 @@ class IPhoneGraphicsWindow;
 /**
  *
  */
-class IPhoneGraphicsStateGuardian : public GLESGraphicsStateGuardian {
+class IOSGraphicsStateGuardian : public GLESGraphicsStateGuardian {
 public:
-  IPhoneGraphicsStateGuardian(GraphicsEngine *engine, GraphicsPipe *pipe,
-                              IPhoneGraphicsStateGuardian *share_with);
-  virtual ~IPhoneGraphicsStateGuardian();
+  IOSGraphicsStateGuardian(GraphicsEngine *engine, GraphicsPipe *pipe,
+                              IOSGraphicsStateGuardian *share_with);
+  virtual ~IOSGraphicsStateGuardian();
   virtual void reset();
 
 protected:
@@ -39,7 +39,7 @@ private:
 
   // We have to save a pointer to the GSG we intend to share texture context
   // with, since we don't create our own context in the constructor.
-  PT(IPhoneGraphicsStateGuardian) _share_with;
+  PT(IOSGraphicsStateGuardian) _share_with;
 
 public:
   GLint _shared_buffer;
@@ -50,7 +50,7 @@ public:
   }
   static void init_type() {
     GLESGraphicsStateGuardian::init_type();
-    register_type(_type_handle, "IPhoneGraphicsStateGuardian",
+    register_type(_type_handle, "IOSGraphicsStateGuardian",
                   GLESGraphicsStateGuardian::get_class_type());
   }
   virtual TypeHandle get_type() const {

@@ -14,7 +14,7 @@
 #include "iOSGraphicsPipe.h"
 #include "config_iosdisplay.h"
 #include "iPhoneGraphicsWindow.h"
-#include "iPhoneGraphicsStateGuardian.h"
+#include "iOSGraphicsStateGuardian.h"
 #include "pnmImage.h"
 #include "graphicsOutput.h"
 
@@ -114,7 +114,7 @@ make_output(const string &name,
     return NULL;
   }
 
-  IPhoneGraphicsStateGuardian *iphonegsg = 0;
+  IOSGraphicsStateGuardian *iphonegsg = 0;
   if (gsg != 0) {
     DCAST_INTO_R(iphonegsg, gsg, NULL);
   }

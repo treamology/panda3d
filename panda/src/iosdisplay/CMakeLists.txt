@@ -6,7 +6,7 @@ set(P3IOSDISPLAY_HEADERS
     config_iosdisplay.h
     iOSGraphicsPipe.h
     iPhoneGraphicsWindow.h iPhoneGraphicsWindow.I
-    iPhoneGraphicsStateGuardian.h
+    iOSGraphicsStateGuardian.h
     viewController.h
     eaglView.h)
 
@@ -14,7 +14,7 @@ set(P3IOSDISPLAY_SOURCES
     config_iosdisplay.mm
     iOSGraphicsPipe.mm
     iPhoneGraphicsWindow.mm
-    iPhoneGraphicsStateGuardian.mm
+    iOSGraphicsStateGuardian.mm
     viewController.mm
     eaglView.mm)
 

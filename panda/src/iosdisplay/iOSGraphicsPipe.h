@@ -20,7 +20,7 @@
 #import "viewController.h"
 #import <UIKit/UIKit.h>
 
-class IPhoneGraphicsStateGuardian;
+class IOSGraphicsStateGuardian;
 class IPhoneGraphicsWindow;
 class PNMImage;
 

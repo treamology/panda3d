@@ -26,7 +26,7 @@
 #include "glesgsg.h"
 #include "keyboardButton.h"
 #include "mouseButton.h"
-#include "iPhoneGraphicsStateGuardian.h"
+#include "iOSGraphicsStateGuardian.h"
 #include "iOSGraphicsPipe.h"
 #include "throw_event.h"
 #include "pnmImage.h"
@@ -296,7 +296,7 @@ open_window() {
   iphonepipe->_view_controller.view = _gl_view;
   [ _gl_view layoutSubviews ];
 
-  _gsg = new IPhoneGraphicsStateGuardian(_engine, _pipe, NULL);
+  _gsg = new IOSGraphicsStateGuardian(_engine, _pipe, NULL);
 
   CGRect bounds = [_gl_view bounds];
 
