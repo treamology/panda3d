@@ -17,9 +17,9 @@
 #include "pandabase.h"
 #include "glesgsg.h"
 
-#include "iPhoneGraphicsWindow.h"
+#include "iOSGraphicsWindow.h"
 
-class IPhoneGraphicsWindow;
+class IOSGraphicsWindow;
 
 /**
  *

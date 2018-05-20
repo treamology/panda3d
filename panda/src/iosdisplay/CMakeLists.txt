@@ -5,7 +5,7 @@ endif()
 set(P3IOSDISPLAY_HEADERS
     config_iosdisplay.h
     iOSGraphicsPipe.h
-    iPhoneGraphicsWindow.h iPhoneGraphicsWindow.I
+    iOSGraphicsWindow.h iOSGraphicsWindow.I
     iOSGraphicsStateGuardian.h
     viewController.h
     eaglView.h)
@@ -13,7 +13,7 @@ set(P3IOSDISPLAY_HEADERS
 set(P3IOSDISPLAY_SOURCES
     config_iosdisplay.mm
     iOSGraphicsPipe.mm
-    iPhoneGraphicsWindow.mm
+    iOSGraphicsWindow.mm
     iOSGraphicsStateGuardian.mm
     viewController.mm
     eaglView.mm)

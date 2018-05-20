@@ -17,7 +17,7 @@
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 
-class IPhoneGraphicsWindow;
+class IOSGraphicsWindow;
 
 /*
 This class wraps the CAEAGLLayer from CoreAnimation into a convenient UIView subclass.
@@ -27,7 +27,7 @@ Note that setting the view non-opaque will only work if the EAGL surface has an 
 @interface EAGLView : UIView {
 
 @public
-  IPhoneGraphicsWindow *_window;
+  IOSGraphicsWindow *_window;
 @private
 
   /* The pixel dimensions of the backbuffer */

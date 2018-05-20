@@ -13,7 +13,7 @@
 
 #include "iOSGraphicsPipe.h"
 #include "config_iosdisplay.h"
-#include "iPhoneGraphicsWindow.h"
+#include "iOSGraphicsWindow.h"
 #include "iOSGraphicsStateGuardian.h"
 #include "pnmImage.h"
 #include "graphicsOutput.h"
@@ -91,7 +91,7 @@ void IOSGraphicsPipe::
 rotate_windows() {
   GraphicsWindows::iterator gwi;
   for (gwi = _graphics_windows.begin(); gwi != _graphics_windows.end(); ++gwi) {
-    IPhoneGraphicsWindow *win = (*gwi);
+    IOSGraphicsWindow *win = (*gwi);
     win->rotate_window();
   }
 }
@@ -119,7 +119,7 @@ make_output(const string &name,
     DCAST_INTO_R(iphonegsg, gsg, NULL);
   }
 
-  // First thing to try: an IPhoneGraphicsWindow
+  // First thing to try: an IOSGraphicsWindow
 
   if (retry == 0) {
     if (((flags&BF_require_parasite)!=0)||
@@ -130,7 +130,7 @@ make_output(const string &name,
         ((flags&BF_can_bind_every)!=0)) {
       return NULL;
     }
-    return new IPhoneGraphicsWindow(engine, this, name, fb_prop, win_prop,
+    return new IOSGraphicsWindow(engine, this, name, fb_prop, win_prop,
                                     flags, gsg, host);
   }
 

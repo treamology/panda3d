@@ -6,7 +6,7 @@
  * license.  You should have received a copy of this license along
  * with this source code in a file named "LICENSE."
  *
- * @file iPhoneGraphicsWindow.mm
+ * @file iOSGraphicsWindow.mm
  * @author drose
  * @date 2009-04-08
  */
@@ -18,7 +18,7 @@
 
 #include <UIKit/UIKit.h>
 
-#include "iPhoneGraphicsWindow.h"
+#include "iOSGraphicsWindow.h"
 #include "dcast.h"
 #include "config_iosdisplay.h"
 #include "iOSGraphicsPipe.h"
@@ -35,13 +35,13 @@
 #include "pset.h"
 #include "pmutex.h"
 
-TypeHandle IPhoneGraphicsWindow::_type_handle;
+TypeHandle IOSGraphicsWindow::_type_handle;
 
 /**
  *
  */
-IPhoneGraphicsWindow::
-IPhoneGraphicsWindow(GraphicsEngine *engine, GraphicsPipe *pipe,
+IOSGraphicsWindow::
+IOSGraphicsWindow(GraphicsEngine *engine, GraphicsPipe *pipe,
                      const string &name,
                      const FrameBufferProperties &fb_prop,
                      const WindowProperties &win_prop,
@@ -64,8 +64,8 @@ IPhoneGraphicsWindow(GraphicsEngine *engine, GraphicsPipe *pipe,
 /**
  *
  */
-IPhoneGraphicsWindow::
-~IPhoneGraphicsWindow() {
+IOSGraphicsWindow::
+~IOSGraphicsWindow() {
   if (_gl_view != nil) {
     [ _gl_view release ];
   }
@@ -77,7 +77,7 @@ IPhoneGraphicsWindow::
  * return true if the frame should be rendered, or false if it should be
  * skipped.
  */
-bool IPhoneGraphicsWindow::
+bool IOSGraphicsWindow::
 begin_frame(FrameMode mode, Thread *current_thread) {
   PStatTimer timer(_make_current_pcollector);
 
@@ -98,7 +98,7 @@ begin_frame(FrameMode mode, Thread *current_thread) {
  * completed for a given frame.  It should do whatever finalization is
  * required.
  */
-void IPhoneGraphicsWindow::
+void IOSGraphicsWindow::
 end_frame(FrameMode mode, Thread *current_thread) {
   end_frame_spam(mode);
 
@@ -126,11 +126,11 @@ end_frame(FrameMode mode, Thread *current_thread) {
  * We have the two separate functions, begin_flip() and end_flip(), to make it
  * easier to flip all of the windows at the same time.
  */
-void IPhoneGraphicsWindow::
+void IOSGraphicsWindow::
 end_flip() {
 }
 
-void IPhoneGraphicsWindow::
+void IOSGraphicsWindow::
 begin_flip() {
 }
 
@@ -138,7 +138,7 @@ begin_flip() {
  * Required event upcall, used to dispatch window and application events back
  * into panda.
  */
-void IPhoneGraphicsWindow::
+void IOSGraphicsWindow::
 process_events() {
   GraphicsWindow::process_events();
 }
@@ -157,7 +157,7 @@ process_events() {
  * underlying interface does not support changing that property on an open
  * window).
  */
-void IPhoneGraphicsWindow::
+void IOSGraphicsWindow::
 set_properties_now(WindowProperties &properties) {
   if (iosdisplay_cat.is_debug()) {
     iosdisplay_cat.debug()
@@ -173,7 +173,7 @@ set_properties_now(WindowProperties &properties) {
  * Sets the window's _pipe pointer to NULL; this is generally called only as a
  * precursor to deleting the window.
  */
-void IPhoneGraphicsWindow::
+void IOSGraphicsWindow::
 clear_pipe() {
   IOSGraphicsPipe *ipipe;
   DCAST_INTO_V(ipipe, _pipe);
@@ -186,7 +186,7 @@ clear_pipe() {
  * Called in response to an orientation change event, this tells the window to
  * resize itself according to the new orientation.
  */
-void IPhoneGraphicsWindow::
+void IOSGraphicsWindow::
 rotate_window() {
   CGRect bounds = [_gl_view bounds];
 
@@ -198,7 +198,7 @@ rotate_window() {
 /**
  * Beginning a single- or multi-touch gesture.
  */
-void IPhoneGraphicsWindow::
+void IOSGraphicsWindow::
 touches_began(NSSet *touches, UIEvent *event) {
   // Average the position of all of the touches.
   CGPoint location = get_average_location(touches);
@@ -210,7 +210,7 @@ touches_began(NSSet *touches, UIEvent *event) {
 /**
  * Continuing a single- or multi-touch gesture.
  */
-void IPhoneGraphicsWindow::
+void IOSGraphicsWindow::
 touches_moved(NSSet *touches, UIEvent *event) {
   // Average the position of all of the touches.
   CGPoint location = get_average_location(touches);
@@ -222,7 +222,7 @@ touches_moved(NSSet *touches, UIEvent *event) {
 /**
  * Finishing a single- or multi-touch gesture.
  */
-void IPhoneGraphicsWindow::
+void IOSGraphicsWindow::
 touches_ended(NSSet *touches, UIEvent *event) {
   set_pointer_out_of_window();
   handle_button_delta(0);
@@ -231,7 +231,7 @@ touches_ended(NSSet *touches, UIEvent *event) {
 /**
  * Cancelling a single- or multi-touch gesture.
  */
-void IPhoneGraphicsWindow::
+void IOSGraphicsWindow::
 touches_cancelled(NSSet *touches, UIEvent *event) {
   set_pointer_out_of_window();
   handle_button_delta(0);
@@ -240,7 +240,7 @@ touches_cancelled(NSSet *touches, UIEvent *event) {
 /**
  * Returns the average location of all of the indicated touches.
  */
-CGPoint IPhoneGraphicsWindow::
+CGPoint IOSGraphicsWindow::
 get_average_location(NSSet *touches) {
   NSEnumerator *enumerator = [ touches objectEnumerator ];
   CGPoint sum;
@@ -263,7 +263,7 @@ get_average_location(NSSet *touches) {
 /**
  * Closes the window right now.  Called from the window thread.
  */
-void IPhoneGraphicsWindow::
+void IOSGraphicsWindow::
 close_window() {
   // system_close_window();
 
@@ -281,7 +281,7 @@ close_window() {
  * Opens the window right now.  Called from the window thread.  Returns true
  * if the window is successfully opened, or false if there was a problem.
  */
-bool IPhoneGraphicsWindow::
+bool IOSGraphicsWindow::
 open_window() {
   nassertr(_gsg == (GraphicsStateGuardian *)NULL, false);
 
@@ -312,7 +312,7 @@ open_window() {
 /**
  * Indicates the mouse pointer is seen within the window.
  */
-void IPhoneGraphicsWindow::
+void IOSGraphicsWindow::
 set_pointer_in_window(int x, int y) {
   _input_devices[0].set_pointer_in_window(x, y);
 }
@@ -320,7 +320,7 @@ set_pointer_in_window(int x, int y) {
 /**
  * Indicates the mouse pointer is no longer within the window.
  */
-void IPhoneGraphicsWindow::
+void IOSGraphicsWindow::
 set_pointer_out_of_window() {
   _input_devices[0].set_pointer_out_of_window();
 }
@@ -328,7 +328,7 @@ set_pointer_out_of_window() {
 /**
  * Used to emulate button events
  */
-void IPhoneGraphicsWindow::
+void IOSGraphicsWindow::
 handle_button_delta(int num_touches) {
   // For now, we'll just map the number of touches to the mouse button number.
   // 1 touch is button 1, 2 touches is button 3 (because this is the normal

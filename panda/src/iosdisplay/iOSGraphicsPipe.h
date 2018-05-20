@@ -21,7 +21,7 @@
 #import <UIKit/UIKit.h>
 
 class IOSGraphicsStateGuardian;
-class IPhoneGraphicsWindow;
+class IOSGraphicsWindow;
 class PNMImage;
 
 /**
@@ -54,7 +54,7 @@ public:
   UIWindow *_window;
   ControllerDemoViewController *_view_controller;
 
-  typedef pset<IPhoneGraphicsWindow *> GraphicsWindows;
+  typedef pset<IOSGraphicsWindow *> GraphicsWindows;
   GraphicsWindows _graphics_windows;
 
 private:

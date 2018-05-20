@@ -18,7 +18,7 @@
 
 #include "pandabase.h"
 #include "pnotify.h"
-#include "iPhoneGraphicsWindow.h"
+#include "iOSGraphicsWindow.h"
 
 #define USE_DEPTH_BUFFER 1
 

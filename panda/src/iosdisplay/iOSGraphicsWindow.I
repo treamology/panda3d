@@ -6,7 +6,7 @@
  * license.  You should have received a copy of this license along
  * with this source code in a file named "LICENSE."
  *
- * @file iPhoneGraphicsWindow.I
+ * @file iOSGraphicsWindow.I
  * @author drose
  * @date 2009-04-08
  */

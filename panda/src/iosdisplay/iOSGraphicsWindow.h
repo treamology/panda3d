@@ -6,7 +6,7 @@
  * license.  You should have received a copy of this license along
  * with this source code in a file named "LICENSE."
  *
- * @file iPhoneGraphicsWindow.h
+ * @file iOSGraphicsWindow.h
  * @author drose
  * @date 2009-04-08
  */
@@ -25,16 +25,16 @@
 /**
  * An interface to the osx/ system for managing GL windows under X.
  */
-class IPhoneGraphicsWindow : public GraphicsWindow {
+class IOSGraphicsWindow : public GraphicsWindow {
 public:
-  IPhoneGraphicsWindow(GraphicsEngine *engine, GraphicsPipe *pipe,
+  IOSGraphicsWindow(GraphicsEngine *engine, GraphicsPipe *pipe,
                        const string &name,
                        const FrameBufferProperties &fb_prop,
                        const WindowProperties &win_prop,
                        int flags,
                        GraphicsStateGuardian *gsg,
                        GraphicsOutput *host);
-  virtual ~IPhoneGraphicsWindow();
+  virtual ~IOSGraphicsWindow();
 
   virtual bool begin_frame(FrameMode mode, Thread *current_thread);
   virtual void end_frame(FrameMode mode, Thread *current_thread);
@@ -73,7 +73,7 @@ public:
   }
   static void init_type() {
     GraphicsWindow::init_type();
-    register_type(_type_handle, "IPhoneGraphicsWindow",
+    register_type(_type_handle, "IOSGraphicsWindow",
                   GraphicsWindow::get_class_type());
   }
   virtual TypeHandle get_type() const {
@@ -85,6 +85,6 @@ private:
   static TypeHandle _type_handle;
 };
 
-#include "iPhoneGraphicsWindow.I"
+#include "iOSGraphicsWindow.I"
 
 #endif
