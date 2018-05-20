@@ -6,12 +6,12 @@
  * license.  You should have received a copy of this license along
  * with this source code in a file named "LICENSE."
  *
- * @file config_iphonedisplay.mm
+ * @file config_iosdisplay.mm
  * @author drose
  * @date 2009-04-08
  */
 
-#include "config_iphonedisplay.h"
+#include "config_iosdisplay.h"
 #include "iPhoneGraphicsPipe.h"
 #include "iPhoneGraphicsStateGuardian.h"
 #include "iPhoneGraphicsWindow.h"
@@ -21,17 +21,17 @@
 #include "pandaSystem.h"
 
 
-Configure(config_iphonedisplay);
+Configure(config_iosdisplay);
 
-NotifyCategoryDef(iphonedisplay, "display");
+NotifyCategoryDef(iosdisplay, "display");
 
-ConfigureFn(config_iphonedisplay) {
-  init_libiphonedisplay();
+ConfigureFn(config_iosdisplay) {
+  init_libiosdisplay();
 }
 
-ConfigVariableBool iphone_autorotate_view
-("iphone-autorotate-view", true,
- PRC_DESC("Set this true to enable the iphone application to rotate its "
+ConfigVariableBool ios_autorotate_view
+("ios-autorotate-view", true,
+ PRC_DESC("Set this true to enable the iOS application to rotate its "
           "view automatically according to the phone's orientation, or "
           "false for its view to remain fixed."));
 
@@ -42,7 +42,7 @@ ConfigVariableBool iphone_autorotate_view
  * special cases exist.
  */
 void
-init_libiphonedisplay() {
+init_libiosdisplay() {
   static bool initialized = false;
   if (initialized) {
     return;
@@ -57,8 +57,8 @@ init_libiphonedisplay() {
   selection->add_pipe_type(IPhoneGraphicsPipe::get_class_type(), IPhoneGraphicsPipe::pipe_constructor);
 
   PandaSystem *ps = PandaSystem::get_global_ptr();
-  ps->set_system_tag("OpenGL", "window_system", "IPhone");
-  ps->set_system_tag("OpenGL ES", "window_system", "IPhone");
+  ps->set_system_tag("OpenGL", "window_system", "iOS");
+  ps->set_system_tag("OpenGL ES", "window_system", "iOS");
 
   GLESinit_classes();
 }
@@ -68,6 +68,6 @@ init_libiphonedisplay() {
  * by this module.
  */
 int
-get_pipe_type_iphonedisplay() {
+get_pipe_type_iosdisplay() {
   return IPhoneGraphicsPipe::get_class_type().get_index();
 }

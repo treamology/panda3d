@@ -20,7 +20,7 @@
 
 #include "iPhoneGraphicsWindow.h"
 #include "dcast.h"
-#include "config_iphonedisplay.h"
+#include "config_iosdisplay.h"
 #include "iPhoneGraphicsPipe.h"
 #include "pStatTimer.h"
 #include "glesgsg.h"
@@ -159,10 +159,10 @@ process_events() {
  */
 void IPhoneGraphicsWindow::
 set_properties_now(WindowProperties &properties) {
-  if (iphonedisplay_cat.is_debug()) {
-    iphonedisplay_cat.debug()
+  if (iosdisplay_cat.is_debug()) {
+    iosdisplay_cat.debug()
       << "------------------------------------------------------\n";
-    iphonedisplay_cat.debug()
+    iosdisplay_cat.debug()
       << "set_properties_now " << properties << "\n";
   }
 

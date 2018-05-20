@@ -3,7 +3,7 @@ if(NOT APPLE OR NOT IOS)
 endif()
 
 set(P3IOSDISPLAY_HEADERS
-    config_iphonedisplay.h
+    config_iosdisplay.h
     iPhoneGraphicsPipe.h
     iPhoneGraphicsWindow.h iPhoneGraphicsWindow.I
     iPhoneGraphicsStateGuardian.h
@@ -11,7 +11,7 @@ set(P3IOSDISPLAY_HEADERS
     eaglView.h)
 
 set(P3IOSDISPLAY_SOURCES
-    config_iphonedisplay.mm
+    config_iosdisplay.mm
     iPhoneGraphicsPipe.mm
     iPhoneGraphicsWindow.mm
     iPhoneGraphicsStateGuardian.mm

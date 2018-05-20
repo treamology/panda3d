@@ -13,7 +13,7 @@
 #include "config_androiddisplay.h"
 #include "androidGraphicsPipe.h"
 #elif defined(IOS)
-#include "config_iphonedisplay.h"
+#include "config_iosdisplay.h"
 #include "iPhoneGraphicsPipe.h"
 #else
 #include "config_egldisplay.h"
@@ -39,7 +39,7 @@ init_libpandagles() {
 #if defined(ANDROID)
   init_libandroiddisplay();
 #elif defined(IOS)
-  init_libiphonedisplay();
+  init_libiosdisplay();
 #else
   init_libegldisplay();
 #endif

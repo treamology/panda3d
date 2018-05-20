@@ -6,7 +6,7 @@
  * license.  You should have received a copy of this license along
  * with this source code in a file named "LICENSE."
  *
- * @file config_iphonedisplay.h
+ * @file config_iosdisplay.h
  * @author drose
  * @date 2009-04-08
  */
@@ -19,11 +19,11 @@
 #include "configVariableBool.h"
 #include "configVariableInt.h"
 
-NotifyCategoryDecl(iphonedisplay, EXPCL_MISC, EXPTP_MISC);
+NotifyCategoryDecl(iosdisplay, EXPCL_MISC, EXPTP_MISC);
 
-extern ConfigVariableBool iphone_autorotate_view;
+extern ConfigVariableBool ios_autorotate_view;
 
-extern EXPCL_MISC void init_libiphonedisplay();
-extern "C" EXPCL_MISC int get_pipe_type_iphonedisplay();
+extern EXPCL_MISC void init_libiosdisplay();
+extern "C" EXPCL_MISC int get_pipe_type_iosdisplay();
 
 #endif  // CONFIG_IOSDISPLAY_H

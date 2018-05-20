@@ -14,7 +14,7 @@
 #import "viewController.h"
 #include "pnotify.h"
 #include "iPhoneGraphicsPipe.h"
-#include "config_iphonedisplay.h"
+#include "config_iosdisplay.h"
 
 @implementation ControllerDemoViewController
 
@@ -29,7 +29,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:
   (UIInterfaceOrientation)interfaceOrientation
 {
-  return iphone_autorotate_view;
+  return ios_autorotate_view;
 }
 
 - (void)didRotateFromInterfaceOrientation:
