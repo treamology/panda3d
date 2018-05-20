@@ -21,13 +21,13 @@
 #include "iPhoneGraphicsWindow.h"
 #include "dcast.h"
 #include "config_iosdisplay.h"
-#include "iPhoneGraphicsPipe.h"
+#include "iOSGraphicsPipe.h"
 #include "pStatTimer.h"
 #include "glesgsg.h"
 #include "keyboardButton.h"
 #include "mouseButton.h"
 #include "iPhoneGraphicsStateGuardian.h"
-#include "iPhoneGraphicsPipe.h"
+#include "iOSGraphicsPipe.h"
 #include "throw_event.h"
 #include "pnmImage.h"
 #include "virtualFileSystem.h"
@@ -50,7 +50,7 @@ IPhoneGraphicsWindow(GraphicsEngine *engine, GraphicsPipe *pipe,
                      GraphicsOutput *host) :
   GraphicsWindow(engine, pipe, name, fb_prop, win_prop, flags, gsg, host)
 {
-  IPhoneGraphicsPipe *ipipe;
+  IOSGraphicsPipe *ipipe;
   DCAST_INTO_V(ipipe, _pipe);
   ipipe->_graphics_windows.insert(this);
   _gl_view = nil;
@@ -175,7 +175,7 @@ set_properties_now(WindowProperties &properties) {
  */
 void IPhoneGraphicsWindow::
 clear_pipe() {
-  IPhoneGraphicsPipe *ipipe;
+  IOSGraphicsPipe *ipipe;
   DCAST_INTO_V(ipipe, _pipe);
   ipipe->_graphics_windows.erase(this);
 
@@ -290,7 +290,7 @@ open_window() {
     ];
   _gl_view->_window = this;
 
-  IPhoneGraphicsPipe *iphonepipe = DCAST(IPhoneGraphicsPipe, _pipe);
+  IOSGraphicsPipe *iphonepipe = DCAST(IOSGraphicsPipe, _pipe);
   nassertr(iphonepipe != NULL, false);
 
   iphonepipe->_view_controller.view = _gl_view;

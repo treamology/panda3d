@@ -13,13 +13,13 @@
 
 #import "viewController.h"
 #include "pnotify.h"
-#include "iPhoneGraphicsPipe.h"
+#include "iOSGraphicsPipe.h"
 #include "config_iosdisplay.h"
 
 @implementation ControllerDemoViewController
 
 - (id)initWithPipe:
-  (IPhoneGraphicsPipe *)pipe
+  (IOSGraphicsPipe *)pipe
 {
   self = [ super init ];
   _pipe = pipe;

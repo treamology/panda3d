@@ -12,7 +12,7 @@
  */
 
 #include "config_iosdisplay.h"
-#include "iPhoneGraphicsPipe.h"
+#include "iOSGraphicsPipe.h"
 #include "iPhoneGraphicsStateGuardian.h"
 #include "iPhoneGraphicsWindow.h"
 
@@ -49,12 +49,12 @@ init_libiosdisplay() {
   }
   initialized = true;
 
-  IPhoneGraphicsPipe::init_type();
+  IOSGraphicsPipe::init_type();
   IPhoneGraphicsWindow::init_type();
   IPhoneGraphicsStateGuardian::init_type();
 
   GraphicsPipeSelection *selection = GraphicsPipeSelection::get_global_ptr();
-  selection->add_pipe_type(IPhoneGraphicsPipe::get_class_type(), IPhoneGraphicsPipe::pipe_constructor);
+  selection->add_pipe_type(IOSGraphicsPipe::get_class_type(), IOSGraphicsPipe::pipe_constructor);
 
   PandaSystem *ps = PandaSystem::get_global_ptr();
   ps->set_system_tag("OpenGL", "window_system", "iOS");
@@ -69,5 +69,5 @@ init_libiosdisplay() {
  */
 int
 get_pipe_type_iosdisplay() {
-  return IPhoneGraphicsPipe::get_class_type().get_index();
+  return IOSGraphicsPipe::get_class_type().get_index();
 }

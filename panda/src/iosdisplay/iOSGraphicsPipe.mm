@@ -6,27 +6,27 @@
  * license.  You should have received a copy of this license along
  * with this source code in a file named "LICENSE."
  *
- * @file iPhoneGraphicsPipe.mm
+ * @file iOSGraphicsPipe.mm
  * @author drose
  * @date 2009-04-08
  */
 
-#include "iPhoneGraphicsPipe.h"
+#include "iOSGraphicsPipe.h"
 #include "config_iosdisplay.h"
 #include "iPhoneGraphicsWindow.h"
 #include "iPhoneGraphicsStateGuardian.h"
 #include "pnmImage.h"
 #include "graphicsOutput.h"
 
-IPhoneGraphicsPipe *IPhoneGraphicsPipe::_global_ptr;
-TypeHandle IPhoneGraphicsPipe::_type_handle;
+IOSGraphicsPipe *IOSGraphicsPipe::_global_ptr;
+TypeHandle IOSGraphicsPipe::_type_handle;
 
 
 /**
  *
  */
-IPhoneGraphicsPipe::
-IPhoneGraphicsPipe() {
+IOSGraphicsPipe::
+IOSGraphicsPipe() {
   CGRect screenBounds = [ [ UIScreen mainScreen ] bounds ];
 
   _window = [ [ UIWindow alloc ] initWithFrame: screenBounds ];
@@ -39,8 +39,8 @@ IPhoneGraphicsPipe() {
 /**
  *
  */
-IPhoneGraphicsPipe::
-~IPhoneGraphicsPipe() {
+IOSGraphicsPipe::
+~IOSGraphicsPipe() {
   [_view_controller release];
   [_window release];
 }
@@ -51,22 +51,22 @@ IPhoneGraphicsPipe::
  * choose between several possible GraphicsPipes available on a particular
  * platform, so the name should be meaningful and unique for a given platform.
  */
-string IPhoneGraphicsPipe::
+string IOSGraphicsPipe::
 get_interface_name() const {
   return "OpenGL ES";
 }
 
 /**
  * This function is passed to the GraphicsPipeSelection object to allow the
- * user to make a default IPhoneGraphicsPipe.
+ * user to make a default IOSGraphicsPipe.
  */
-PT(GraphicsPipe) IPhoneGraphicsPipe::
+PT(GraphicsPipe) IOSGraphicsPipe::
 pipe_constructor() {
-  // There is only one IPhoneGraphicsPipe in the universe for any given
+  // There is only one IOSGraphicsPipe in the universe for any given
   // application.  Even if you ask for a new one, you just get the same one
   // you had before.
-  if (_global_ptr == (IPhoneGraphicsPipe *)NULL) {
-    _global_ptr = new IPhoneGraphicsPipe;
+  if (_global_ptr == (IOSGraphicsPipe *)NULL) {
+    _global_ptr = new IOSGraphicsPipe;
     _global_ptr->ref();
   }
   return _global_ptr;
@@ -78,7 +78,7 @@ pipe_constructor() {
  * X) or the draw thread (Windows).
  */
 GraphicsPipe::PreferredWindowThread
-IPhoneGraphicsPipe::get_preferred_window_thread() const {
+IOSGraphicsPipe::get_preferred_window_thread() const {
   return PWT_app;
 }
 
@@ -87,7 +87,7 @@ IPhoneGraphicsPipe::get_preferred_window_thread() const {
  * windows created on the pipe to resize themselves according to the new
  * orientation.
  */
-void IPhoneGraphicsPipe::
+void IOSGraphicsPipe::
 rotate_windows() {
   GraphicsWindows::iterator gwi;
   for (gwi = _graphics_windows.begin(); gwi != _graphics_windows.end(); ++gwi) {
@@ -100,7 +100,7 @@ rotate_windows() {
 /**
  * Creates a new window on the pipe, if possible.
  */
-PT(GraphicsOutput) IPhoneGraphicsPipe::
+PT(GraphicsOutput) IOSGraphicsPipe::
 make_output(const string &name,
             const FrameBufferProperties &fb_prop,
             const WindowProperties &win_prop,

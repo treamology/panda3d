@@ -16,13 +16,13 @@
 #import <UIKit/UIKit.h>
 #import <UIKit/UITextView.h>
 
-class IPhoneGraphicsPipe;
+class IOSGraphicsPipe;
 
 @interface ControllerDemoViewController : UIViewController {
 
 @private
-  IPhoneGraphicsPipe *_pipe;
+  IOSGraphicsPipe *_pipe;
 }
 
-- (id)initWithPipe: (IPhoneGraphicsPipe *)pipe;
+- (id)initWithPipe: (IOSGraphicsPipe *)pipe;
 @end

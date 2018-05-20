@@ -6,7 +6,7 @@
  * license.  You should have received a copy of this license along
  * with this source code in a file named "LICENSE."
  *
- * @file iPhoneGraphicsPipe.h
+ * @file iOSGraphicsPipe.h
  * @author drose
  * @date 2009-04-08
  */
@@ -26,12 +26,12 @@ class PNMImage;
 
 /**
  * This graphics pipe represents the interface for creating OpenGL graphics
- * windows on the various IOS's.
+ * windows on the various iOS's.
  */
-class EXPCL_MISC IPhoneGraphicsPipe : public GraphicsPipe {
+class EXPCL_MISC IOSGraphicsPipe : public GraphicsPipe {
 public:
-  IPhoneGraphicsPipe();
-  virtual ~IPhoneGraphicsPipe();
+  IOSGraphicsPipe();
+  virtual ~IOSGraphicsPipe();
 
   virtual string get_interface_name() const;
   static PT(GraphicsPipe) pipe_constructor();
@@ -58,7 +58,7 @@ public:
   GraphicsWindows _graphics_windows;
 
 private:
-  static IPhoneGraphicsPipe *_global_ptr;
+  static IOSGraphicsPipe *_global_ptr;
 
 public:
   static TypeHandle get_class_type() {
@@ -66,7 +66,7 @@ public:
   }
   static void init_type() {
     GraphicsPipe::init_type();
-    register_type(_type_handle, "IPhoneGraphicsPipe",
+    register_type(_type_handle, "IOSGraphicsPipe",
                   GraphicsPipe::get_class_type());
   }
   virtual TypeHandle get_type() const {

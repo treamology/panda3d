@@ -14,7 +14,7 @@
 #include "androidGraphicsPipe.h"
 #elif defined(IOS)
 #include "config_iosdisplay.h"
-#include "iPhoneGraphicsPipe.h"
+#include "iOSGraphicsPipe.h"
 #else
 #include "config_egldisplay.h"
 #include "eglGraphicsPipe.h"
@@ -54,7 +54,7 @@ get_pipe_type_pandagles() {
 #if defined(ANDROID)
   return AndroidGraphicsPipe::get_class_type().get_index();
 #elif defined(IOS)
-  return IPhoneGraphicsPipe::get_class_type().get_index();
+  return IOSGraphicsPipe::get_class_type().get_index();
 #else
   return eglGraphicsPipe::get_class_type().get_index();
 #endif
