@@ -9,8 +9,16 @@
 #define OPENGLES_2
 #include "config_gles2gsg.h"
 
+#if defined(ANDROID)
+#include "config_androiddisplay.h"
+#include "androidGraphicsPipe.h"
+#elif defined(IOS)
+#include "config_iosdisplay.h"
+#include "iOSGraphicsPipe.h"
+#else
 #include "config_egldisplay.h"
 #include "eglGraphicsPipe.h"
+#endif
 
 // By including checkPandaVersion.h, we guarantee that runtime attempts to
 // load libpandagles2.so.dll will fail if they inadvertently link with the
@@ -27,7 +35,14 @@
 void
 init_libpandagles2() {
   init_libgles2gsg();
+
+#if defined(ANDROID)
+  init_libandroiddisplay();
+#elif defined(IOS)
+  init_libiosdisplay();
+#else
   init_libegldisplay();
+#endif
 }
 
 /**
@@ -36,5 +51,11 @@ init_libpandagles2() {
  */
 int
 get_pipe_type_pandagles2() {
+#if defined(ANDROID)
+  return AndroidGraphicsPipe::get_class_type().get_index();
+#elif defined(IOS)
+  return IOSGraphicsPipe::get_class_type().get_index();
+#else
   return eglGraphicsPipe::get_class_type().get_index();
+#endif
 }

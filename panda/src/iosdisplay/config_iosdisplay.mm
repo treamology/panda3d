@@ -60,7 +60,7 @@ init_libiosdisplay() {
   ps->set_system_tag("OpenGL", "window_system", "iOS");
   ps->set_system_tag("OpenGL ES", "window_system", "iOS");
 
-  GLESinit_classes();
+  GLES2init_classes();
 }
 
 /**

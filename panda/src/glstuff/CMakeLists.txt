@@ -3,6 +3,8 @@ if(NOT HAVE_GL AND NOT HAVE_GLES2 AND NOT HAVE_GLES)
 endif()
 
 set(P3GLSTUFF_HEADERS
+   glCgShaderContext_src.I
+   glCgShaderContext_src.h
    glGeomContext_src.I
    glGeomContext_src.h
    glGeomMunger_src.I
@@ -19,10 +21,17 @@ set(P3GLSTUFF_HEADERS
    glOcclusionQueryContext_src.h
    glShaderContext_src.I
    glShaderContext_src.h
+   glBufferContext_src.I
+   glBufferContext_src.h
+   glSamplerContext_src.h
    glTextureContext_src.I
    glTextureContext_src.h
    glVertexBufferContext_src.I
    glVertexBufferContext_src.h
+   glTimerQueryContext_src.I
+   glTimerQueryContext_src.h
+   glLatencyQueryContext_src.I
+   glLatencyQueryContext_src.h
    glmisc_src.h
    glstuff_src.h
    glstuff_undef_src.h

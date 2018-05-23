@@ -15,5 +15,9 @@ if(HAVE_GLES2)
   add_metalib(pandagles2 pandagles2.cxx COMPONENTS ${PANDAGLES2_LINK_TARGETS})
   set_target_properties(pandagles2 PROPERTIES DEFINE_SYMBOL BUILDING_PANDAGLES2)
 
+  if(APPLE)
+    set_target_properties(pandagles2 PROPERTIES COMPILE_FLAGS "-ObjC++")
+  endif()
+
   install(TARGETS pandagles2 DESTINATION lib)
 endif()

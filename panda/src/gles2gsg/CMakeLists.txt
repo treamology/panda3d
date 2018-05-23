@@ -3,7 +3,7 @@ if(NOT HAVE_GLES2)
 endif()
 
 set(P3GLES2GSG_HEADERS
-  config_gles2gsg.h gles2gsg.h
+  config_gles2gsg.h gles2gsg.h panda_esgl2ext.h
 )
 
 set(P3GLES2GSG_SOURCES
