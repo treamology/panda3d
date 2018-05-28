@@ -2,6 +2,9 @@ language: cpp
 sudo: false
 
 # Build matrix:
+os:
+- linux
+- osx
 compiler:
 - gcc
 - clang
@@ -48,6 +51,12 @@ before_install:
 # clean up remnants of makepanda
 - mv makepanda/test_imports.py .
 - makepanda/selfdestruct.py --yes
+# macOS packages
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
+- >
+  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
+  brew install eigen libpng libjpeg libtiff libtar fftw libsquish vrpn zlib 
+  ffmpeg openal-soft freetype bullet ode wxmac opencv assimp libvorbis; fi
 
 install:
 - virtualenv --python=${PYTHON_INTERP:-python3.4} venv && source venv/bin/activate
