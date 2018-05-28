@@ -57,13 +57,16 @@ before_install:
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
   brew install eigen libtar fftw libsquish zlib ffmpeg freetype bullet
   ode wxmac opencv assimp libvorbis; fi || true
+# Make sure brew's installed python is used.
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export PATH=/usr/local/bin:$PATH; fi
 
 install:
-- >
-  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-  virtualenv --python=/usr/local/bin/${PYTHON_INTERP:-python3} venv && source venv/bin/activate;
-  else virtualenv --python=${PYTHON_INTERP:-python3.4} venv && source venv/bin/activate;
-  fi
+# - >
+#   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+#   virtualenv --python=/usr/local/bin/${PYTHON_INTERP:-python3} venv && source venv/bin/activate;
+#   else virtualenv --python=${PYTHON_INTERP:-python3.4} venv && source venv/bin/activate;
+#   fi
+- virtualenv --python=/usr/local/bin/${PYTHON_INTERP:-python3} venv && source venv/bin/activate;
 - pip install pytest
 
 before_script:
