@@ -56,21 +56,15 @@ before_install:
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
   brew install eigen libtar fftw libsquish zlib ffmpeg freetype bullet
-  ode wxmac opencv assimp libvorbis; fi || true
+  ode wxmac opencv assimp libvorbis openssl; fi || true
+# Make sure to use a working virtualenv command
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
   rm /usr/local/bin/virtualenv;
   ${PYTHON_INTERP:-python3} -m pip install virtualenv; fi
-# Make sure brew's installed python is used.
-# - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then export PATH=/usr/local/bin:$PATH; fi
 
 install:
-# - >
-#   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-#   virtualenv --python=/usr/local/bin/${PYTHON_INTERP:-python3} venv && source venv/bin/activate;
-#   else virtualenv --python=${PYTHON_INTERP:-python3.4} venv && source venv/bin/activate;
-#   fi
-- virtualenv --python=${PYTHON_INTERP:-python3} venv && source venv/bin/activate;
+- virtualenv --python=${PYTHON_INTERP:-python3} venv && source venv/bin/activate
 - pip install pytest
 
 before_script:
@@ -78,7 +72,13 @@ before_script:
 - cd built
 
 script:
-- cmake -DHAVE_GTK2=NO -DBUILD_METALIBS=$BUILD_METALIBS -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT .. 
+- >
+  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+  cmake -DOPENSSL_ROOT_DIR-DBUILD_METALIBS=$BUILD_METALIBS -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..;
+  else
+  cmake -DHAVE_GTK2=NO -DBUILD_METALIBS=$BUILD_METALIBS -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..;
+  fi
+
 - make -j4
 
 - export PYTHONPATH=$PWD
