@@ -59,7 +59,11 @@ before_install:
   ode wxmac opencv assimp libvorbis; fi || true
 
 install:
-- virtualenv --python=${PYTHON_INTERP:-python3} venv && source venv/bin/activate
+- >
+  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+  virtualenv --python=/usr/local/bin/${PYTHON_INTERP:-python3} venv && source venv/bin/activate;
+  else virtualenv --python=${PYTHON_INTERP:-python3.4} venv && source venv/bin/activate;
+  fi
 - pip install pytest
 
 before_script:
