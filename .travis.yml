@@ -56,7 +56,7 @@ before_install:
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
   brew install eigen libtar fftw libsquish zlib ffmpeg freetype bullet
-  ode wxmac opencv assimp libvorbis openssl@1.0.2o; fi || true
+  ode wxmac opencv assimp libvorbis openssl@1.0; fi || true
 # Make sure to use a working virtualenv command
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
