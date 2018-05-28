@@ -55,11 +55,11 @@ before_install:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
-  brew install eigen libpng libtar fftw libsquish zlib ffmpeg freetype bullet
+  brew install eigen libtar fftw libsquish zlib ffmpeg freetype bullet
   ode wxmac opencv assimp libvorbis; fi || true
 
 install:
-- virtualenv --python=${PYTHON_INTERP:-python3.4} venv && source venv/bin/activate
+- virtualenv --python=${PYTHON_INTERP:-python3} venv && source venv/bin/activate
 - pip install pytest
 
 before_script:
