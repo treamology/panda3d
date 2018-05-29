@@ -44,6 +44,7 @@ addons:
     - nvidia-cg-toolkit
     - python-dev
     - python3-dev
+    - python3-pip
     - python-virtualenv
     - zlib1g-dev
     - fakeroot
