@@ -57,7 +57,7 @@ before_install:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./.travis/before_install_macos.sh; fi
 
 install:
-- $VIRTUALENV_PREFIX virtualenv venv && source venv/bin/activate
+- $MODULE_PREFIX virtualenv --python=${PYTHON_INTERP:-python3} venv && source venv/bin/activate
 - pip install pytest
 
 before_script:
