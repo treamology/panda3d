@@ -51,17 +51,19 @@ before_install:
 # clean up remnants of makepanda
 - mv makepanda/test_imports.py .
 - makepanda/selfdestruct.py --yes
-# macOS packages
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
-- >
-  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
-  brew install eigen libtar fftw libsquish zlib ffmpeg freetype bullet
-  ode wxmac opencv assimp libvorbis openssl@1.0; fi || true
-# Make sure to use a working virtualenv command
-- >
-  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-  rm /usr/local/bin/virtualenv;
-  ${PYTHON_INTERP:-python3} -m pip install virtualenv; fi
+# macOS specifics
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./before_install_macos.sh; fi
+
+# # Make sure gcc is actually used instead of clang which disguises itself
+# - >
+#   if [[ "$TRAVIS_OS_NAME" == "osx" ]] && [[ "$CXX" == "g++" ]]; then
+#   brew link --overwrite gcc; fi
+
+# # Make sure to use a working virtualenv command
+# - >
+#   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+#   rm /usr/local/bin/virtualenv;
+#   ${PYTHON_INTERP:-python3} -m pip install virtualenv; fi
 
 install:
 - virtualenv --python=${PYTHON_INTERP:-python3} venv && source venv/bin/activate
