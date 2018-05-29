@@ -52,7 +52,7 @@ before_install:
 - mv makepanda/test_imports.py .
 - makepanda/selfdestruct.py --yes
 # macOS specifics
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./before_install_macos.sh; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./.travis/before_install_macos.sh; fi
 
 # # Make sure gcc is actually used instead of clang which disguises itself
 # - >
@@ -77,11 +77,11 @@ script:
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
   cmake -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl/1.0.2o_1 -DBUILD_METALIBS=$BUILD_METALIBS -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..;
+  make -j2;
   else
   cmake -DHAVE_GTK2=NO -DBUILD_METALIBS=$BUILD_METALIBS -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..;
+  make -j4;
   fi
-
-- make -j4
 
 - export PYTHONPATH=$PWD
 - python ../test_imports.py
