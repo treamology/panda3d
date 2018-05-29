@@ -55,10 +55,9 @@ before_install:
 - makepanda/selfdestruct.py --yes
 # macOS packages
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./.travis/before_install_macos.sh; fi
-- ${PYTHON_INTERP:-python3} -m pip install virtualenv;
 
 install:
-- ${PYTHON_INTERP:-python3} -m virtualenv venv && source venv/bin/activate
+- $VIRTUALENV_PREFIX virtualenv venv && source venv/bin/activate
 - pip install pytest
 
 before_script:
@@ -69,11 +68,10 @@ script:
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
   cmake -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl/1.0.2o_1 -DBUILD_METALIBS=$BUILD_METALIBS -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..;
-  make -j2;
   else
   cmake -DHAVE_GTK2=NO -DBUILD_METALIBS=$BUILD_METALIBS -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..;
-  make -j4;
   fi
+- make -j4
 
 - export PYTHONPATH=$PWD
 - python ../test_imports.py
