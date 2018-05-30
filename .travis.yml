@@ -80,7 +80,7 @@ script:
 
 - export PYTHONPATH=$PWD
 - python ../test_imports.py
-- pytest ../tests
+- xvfb :1337 & export DISPLAY=:1337 & pytest ../tests
 
 # notifications:
 #   irc:
