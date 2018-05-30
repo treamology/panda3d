@@ -59,7 +59,7 @@ install:
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
     ./.travis/install_macos.sh;
   else
-    virtualenv --python=${PYTHON_INTERP:-python3} venv
+    virtualenv --python=${PYTHON_INTERP:-python3} venv;
   fi
 - source venv/bin/activate
 - pip install pytest
