@@ -6,9 +6,5 @@ brew install ode --with-shared
 
 # We can't trust brew to make the right symlinks, so execute commands as modules
 export MODULE_PREFIX="${PYTHON_INTERP:-python3} -m"
-$MODULE_PREFIX pip install virtualenv
-
-# virtualenv can't find the interpreter, so help it out
-if [[ "$PYTHON_INTERP" == "python2.7" ]]; then
-  export PYTHON_INTERP="/usr/bin/python2.7";
-fi
+${PYTHON_INTERP:-python3} -m pip install virtualenv
+${PYTHON_INTERP:-python3} -m virtualenv --python=${PYTHON_INTERP:-python3} venv

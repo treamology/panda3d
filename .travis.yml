@@ -53,11 +53,15 @@ before_install:
 # clean up remnants of makepanda
 - mv makepanda/test_imports.py .
 - makepanda/selfdestruct.py --yes
-# macOS packages
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./.travis/before_install_macos.sh; fi
 
 install:
-- $MODULE_PREFIX virtualenv --python=${PYTHON_INTERP:-python3} venv && source venv/bin/activate
+- >
+  if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
+    ./.travis/install_macos.sh;
+  else
+    virtualenv --python=${PYTHON_INTERP:-python3} venv
+  fi
+- source venv/bin/activate
 - pip install pytest
 
 before_script:
@@ -67,11 +71,11 @@ before_script:
 script:
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-  cmake -DHAVE_CARBON=NO -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl/1.0.2o_1 \
-  -DBUILD_METALIBS=$BUILD_METALIBS -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..;
+    cmake -DHAVE_CARBON=NO -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl/1.0.2o_1 \
+    -DBUILD_METALIBS=$BUILD_METALIBS -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..;
   else
-  cmake -DHAVE_GTK2=NO -DBUILD_METALIBS=$BUILD_METALIBS \
-  -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..;
+    cmake -DHAVE_GTK2=NO -DBUILD_METALIBS=$BUILD_METALIBS \
+    -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..;
   fi
 - make -j4
 
