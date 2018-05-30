@@ -57,7 +57,7 @@ before_install:
 install:
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
-    .travis/install_macos.sh;
+    ./.travis/install_macos.sh;
   else
     virtualenv --python=${PYTHON_INTERP:-python3} venv;
   fi
@@ -71,7 +71,7 @@ before_script:
 script:
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-    .travis/script_macos.sh;
+    ../.travis/script_macos.sh;
   else
     cmake -DHAVE_GTK2=NO -DBUILD_METALIBS=$BUILD_METALIBS \
     -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..;
