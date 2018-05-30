@@ -21,6 +21,9 @@
 /* Define if we have OpenAL installed. */
 #cmakedefine HAVE_OPENAL
 
+/* Define if we have OpenAL installed as a framework. */
+#cmakedefine HAVE_OPENAL_FRAMEWORK
+
 /* Define if we have Freetype 2.0 or better available. */
 #cmakedefine HAVE_FREETYPE
 
@@ -262,7 +265,7 @@
 #cmakedefine HAVE_OPEN_MASK
 
 /* Define if we have a lockf() function. */
-#cmakedefine HAVE_LOCKF
+#cmakedefine PHAVE_LOCKF
 
 /* Define if some header file defines wchar_t. */
 #cmakedefine HAVE_WCHAR_T
