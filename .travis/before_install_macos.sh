@@ -1,7 +1,8 @@
 #!/bin/bash
 
 brew install python@3 eigen libtar fftw libsquish zlib ffmpeg freetype bullet \
-ode wxmac opencv assimp libvorbis openssl@1.0 || true
+wxmac opencv assimp libvorbis openssl@1.0 || true
+brew install ode --with-shared
 
 # We can't trust brew to make the right symlinks, so execute commands as modules
 export MODULE_PREFIX="${PYTHON_INTERP:-python3} -m"
