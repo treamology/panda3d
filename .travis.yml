@@ -72,7 +72,8 @@ script:
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
     cmake -DHAVE_CARBON=NO -DOPENSSL_ROOT_DIR=/usr/local/Cellar/openssl/1.0.2o_1 \
-    -DBUILD_METALIBS=$BUILD_METALIBS -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..;
+    -DBUILD_METALIBS=$BUILD_METALIBS -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT
+    -DHAVE_AUDIO=NO -DHAVE_BMP=NO -DHAVE_FFMPEG=NO -DHAVE_FFTW=NO -DHAVE_FREETYPE=NO -DHAVE_GTK2=NO -DHAVE_IMG=NO -DHAVE_JPEG=NO _DHAVE_NET=NO -DHAVE_ODE=NO -DHAVE_OPENAL=NO -DHAVE_OPENSSL=NO -DHAVE_PNG=NO -DHAVE_PNM=NO -DHAVE_SGI_RGB=NO -DHAVE_SOFTIMAGE_PIC=NO -DHAVE_SWRESAMPLE=NO -DHAVE_SWSCALE=NO -DHAVE_TGA=NO -DHAVE_X11=NO -DBUILD_PANDATOOL=NO ..;
   else
     cmake -DHAVE_GTK2=NO -DBUILD_METALIBS=$BUILD_METALIBS \
     -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..;
@@ -83,11 +84,11 @@ script:
 - python ../test_imports.py
 - pytest ../tests
 
-notifications:
-  irc:
-    channels:
-    - "chat.freenode.net#panda3d"
-    on_success: change
-    on_failure: always
-    use_notice: true
-    skip_join: true
+# notifications:
+#   irc:
+#     channels:
+#     - "chat.freenode.net#panda3d"
+#     on_success: change
+#     on_failure: always
+#     use_notice: true
+#     skip_join: true
