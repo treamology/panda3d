@@ -48,6 +48,7 @@ addons:
     - python-virtualenv
     - zlib1g-dev
     - fakeroot
+    - xvfb
 
 before_install:
 # clean up remnants of makepanda
@@ -80,7 +81,7 @@ script:
 
 - export PYTHONPATH=$PWD
 - python ../test_imports.py
-- xvfb :1337 & export DISPLAY=:1337 & pytest ../tests
+- sudo xvfb :1337 & export DISPLAY=:1337 & pytest ../tests
 
 # notifications:
 #   irc:
