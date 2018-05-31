@@ -61,9 +61,6 @@ install:
     bullet opencv assimp libvorbis || true
     brew install ode --with-shared
 
-    # The system python is fine, let's not confuse multiple versions
-    brew unlink python@2
-
     # We can't trust brew to make the right symlinks, so execute commands as modules
     ${PYTHON_INTERP:-python3} -m pip install virtualenv
     ${PYTHON_INTERP:-python3} -m virtualenv venv
@@ -80,12 +77,13 @@ before_script:
 script:
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-    # if [[ "$PYTHON_INTERP" == "python2.7" ]]; then
-    #   export PY2_CMAKE_ARGS="-DPYTHON_EXECUTABLE=/usr/local/bin/python -DPYTHON_LIBRARY=/usr/local/opt/python@2/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib"
-    # fi
+    if [[ "$PYTHON_INTERP" == "python2.7" ]]; then
+      export PY2_CMAKE_ARGS= \
+      "-DPYTHON_EXECUTABLE=/usr/local/Frameworks/Python.framework/Versions/2.7"
+    fi
 
     cmake -DHAVE_CARBON=NO -DBUILD_METALIBS=$BUILD_METALIBS \
-    -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..
+    -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT $PY2_CMAKE_ARGS ..
   else
     cmake -DHAVE_GTK2=NO -DBUILD_METALIBS=$BUILD_METALIBS \
     -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..
