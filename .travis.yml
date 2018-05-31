@@ -58,7 +58,7 @@ install:
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
     brew install python@3 eigen libtar fftw libsquish zlib ffmpeg freetype \
-    bullet opencv assimp libvorbis || true
+    bullet opencv assimp libvorbis openssl || true
     brew install ode --with-shared
 
     # We can't trust brew to make the right symlinks, so execute commands as modules
