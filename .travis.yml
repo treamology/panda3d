@@ -48,7 +48,6 @@ addons:
     - python-virtualenv
     - zlib1g-dev
     - fakeroot
-    - xvfb
 
 before_install:
 # clean up remnants of makepanda
@@ -81,13 +80,13 @@ script:
 
 - export PYTHONPATH=$PWD
 - python ../test_imports.py
-- sudo xvfb :1337 & export DISPLAY=:1337 & pytest ../tests
+- pytest ../tests
 
-# notifications:
-#   irc:
-#     channels:
-#     - "chat.freenode.net#panda3d"
-#     on_success: change
-#     on_failure: always
-#     use_notice: true
-#     skip_join: true
+notifications:
+  irc:
+    channels:
+    - "chat.freenode.net#panda3d"
+    on_success: change
+    on_failure: always
+    use_notice: true
+    skip_join: true
