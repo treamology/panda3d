@@ -57,9 +57,18 @@ before_install:
 install:
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then 
-    ./.travis/install_macos.sh;
+    brew install python@3 eigen libtar fftw libsquish zlib ffmpeg freetype \
+    bullet opencv assimp libvorbis || true
+    brew install ode --with-shared
+
+    # The system python is fine, let's not confuse multiple versions
+    brew unlink python@2
+
+    # We can't trust brew to make the right symlinks, so execute commands as modules
+    ${PYTHON_INTERP:-python3} -m pip install virtualenv
+    ${PYTHON_INTERP:-python3} -m virtualenv venv
   else
-    virtualenv --python=${PYTHON_INTERP:-python3} venv;
+    virtualenv --python=${PYTHON_INTERP:-python3} venv
   fi
 - source venv/bin/activate
 - pip install pytest
@@ -71,10 +80,15 @@ before_script:
 script:
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-    ../.travis/script_macos.sh;
+    # if [[ "$PYTHON_INTERP" == "python2.7" ]]; then
+    #   export PY2_CMAKE_ARGS="-DPYTHON_EXECUTABLE=/usr/local/bin/python -DPYTHON_LIBRARY=/usr/local/opt/python@2/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib"
+    # fi
+
+    cmake -DHAVE_CARBON=NO -DBUILD_METALIBS=$BUILD_METALIBS \
+    -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT
   else
     cmake -DHAVE_GTK2=NO -DBUILD_METALIBS=$BUILD_METALIBS \
-    -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..;
+    -DCOMPOSITE_SOURCE_LIMIT=$COMPOSITE_SOURCE_LIMIT ..
   fi
 - make -j4
 
@@ -82,11 +96,11 @@ script:
 - python ../test_imports.py
 - pytest ../tests
 
-notifications:
-  irc:
-    channels:
-    - "chat.freenode.net#panda3d"
-    on_success: change
-    on_failure: always
-    use_notice: true
-    skip_join: true
+# notifications:
+#   irc:
+#     channels:
+#     - "chat.freenode.net#panda3d"
+#     on_success: change
+#     on_failure: always
+#     use_notice: true
+#     skip_join: true
