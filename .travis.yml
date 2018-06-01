@@ -78,8 +78,8 @@ script:
 - >
   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
     if [[ "$PYTHON_INTERP" == "python2.7" ]]; then
-      export PY2_CMAKE_ARGS="-DPYTHON_EXECUTABLE=/usr/local/Frameworks/\
-      Python.framework/Versions/2.7/bin/python"
+      export PY2_CMAKE_ARGS=-DPYTHON_EXECUTABLE=/usr/local/Frameworks/ \
+      Python.framework/Versions/2.7/bin/python
     fi
 
     cmake -DHAVE_CARBON=NO -DBUILD_METALIBS=$BUILD_METALIBS \
