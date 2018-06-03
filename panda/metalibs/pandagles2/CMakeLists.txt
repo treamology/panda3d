@@ -9,7 +9,7 @@ if(HAVE_GLES2)
   set(PANDAGLES2_LINK_TARGETS p3gles2gsg)
 
   if(IOS)
-    set(PANDAGLES2_LINK_TARGETS ${PANDAGLES2_LINK_TARGETS} p3iosdisplay)
+    set(PANDAGLES2_LINK_TARGETS ${PANDAGLES2_LINK_TARGETS} p3iosdisplay p3iosbridges)
   endif()
 
   add_metalib(pandagles2 pandagles2.cxx COMPONENTS ${PANDAGLES2_LINK_TARGETS})
