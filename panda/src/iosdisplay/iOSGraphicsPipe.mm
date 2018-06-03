@@ -21,19 +21,20 @@
 IOSGraphicsPipe *IOSGraphicsPipe::_global_ptr;
 TypeHandle IOSGraphicsPipe::_type_handle;
 
-
 /**
  *
  */
 IOSGraphicsPipe::
 IOSGraphicsPipe() {
-  CGRect screenBounds = [ [ UIScreen mainScreen ] bounds ];
+  // CGRect screenBounds = [ [ UIScreen mainScreen ] bounds ];
+  // _global_ptr = this;
+  //_window = [ [ UIWindow alloc ] initWithFrame: screenBounds ];
+  // _window = [[UIApplication sharedApplication] keyWindow];
+  // _view_controller = [ [ ControllerDemoViewController alloc ] initWithPipe: this ];
 
-  _window = [ [ UIWindow alloc ] initWithFrame: screenBounds ];
-  _view_controller = [ [ ControllerDemoViewController alloc ] initWithPipe: this ];
+  // [ _window addSubview:_view_controller.view ];
+  // [ _window makeKeyAndVisible ];
 
-  [ _window addSubview:_view_controller.view ];
-  [ _window makeKeyAndVisible ];
 }
 
 /**
@@ -41,8 +42,8 @@ IOSGraphicsPipe() {
  */
 IOSGraphicsPipe::
 ~IOSGraphicsPipe() {
-  [_view_controller release];
-  [_window release];
+  // [_view_controller release];
+  // [_window release];
 }
 
 /**

@@ -23,7 +23,7 @@
 #include "config_iosdisplay.h"
 #include "iOSGraphicsPipe.h"
 #include "pStatTimer.h"
-#include "glesgsg.h"
+// #include "glesgsg.h"
 #include "keyboardButton.h"
 #include "mouseButton.h"
 #include "iOSGraphicsStateGuardian.h"
@@ -53,8 +53,9 @@ IOSGraphicsWindow(GraphicsEngine *engine, GraphicsPipe *pipe,
   IOSGraphicsPipe *ipipe;
   DCAST_INTO_V(ipipe, _pipe);
   ipipe->_graphics_windows.insert(this);
-  _gl_view = nil;
+  // backing_view = ipipe->_view_controller.view;
   _last_buttons = 0;
+  backing_view = nil;
 
   GraphicsWindowInputDevice device =
     GraphicsWindowInputDevice::pointer_and_keyboard(this, "keyboard/mouse");
@@ -66,8 +67,9 @@ IOSGraphicsWindow(GraphicsEngine *engine, GraphicsPipe *pipe,
  */
 IOSGraphicsWindow::
 ~IOSGraphicsWindow() {
-  if (_gl_view != nil) {
-    [ _gl_view release ];
+  iosdisplay_cat.debug() << "DEALLOC";
+  if (backing_view != nil) {
+    [ backing_view release ];
   }
 }
 
@@ -109,9 +111,9 @@ end_frame(FrameMode mode, Thread *current_thread) {
 
     _gsg->end_frame(current_thread);
 
-    if (_gl_view != nil) {
-      [_gl_view presentView];
-    }
+    // if (backing_view != nil) {
+    //   [backing_view presentView];
+    // }
   }
 }
 
@@ -188,7 +190,7 @@ clear_pipe() {
  */
 void IOSGraphicsWindow::
 rotate_window() {
-  CGRect bounds = [_gl_view bounds];
+  CGRect bounds = [backing_view bounds];
 
   WindowProperties properties;
   properties.set_size(bounds.size.width, bounds.size.height);
@@ -249,7 +251,7 @@ get_average_location(NSSet *touches) {
 
   UITouch *touch;
   while ((touch = [ enumerator nextObject ])) {
-    CGPoint location = [ touch locationInView: _gl_view ];
+    CGPoint location = [ touch locationInView: backing_view ];
     sum.x += location.x;
     sum.y += location.y;
   }
@@ -283,24 +285,28 @@ close_window() {
  */
 bool IOSGraphicsWindow::
 open_window() {
-  nassertr(_gsg == (GraphicsStateGuardian *)NULL, false);
+  //nassertr(_gsg == (GraphicsStateGuardian *)NULL, false);
 
-  _gl_view = [ [ EAGLView alloc ] initWithFrame:
-        [ [ UIScreen mainScreen ] applicationFrame ]
-    ];
-  _gl_view->_window = this;
+  // backing_view = [ [ EAGLView alloc ] initWithFrame:
+  //       [ [ UIScreen mainScreen ] applicationFrame ]
+  //   ];
+  // backing_view->_window = this;
 
   IOSGraphicsPipe *iphonepipe = DCAST(IOSGraphicsPipe, _pipe);
   nassertr(iphonepipe != NULL, false);
 
-  iphonepipe->_view_controller.view = _gl_view;
-  [ _gl_view layoutSubviews ];
+  // iphonepipe->_view_controller.view = backing_view;
+  // [ backing_view layoutSubviews ];
 
-  _gsg = new IOSGraphicsStateGuardian(_engine, _pipe, NULL);
+  // _gsg = new IOSGraphicsStateGuardian(_engine, _pipe, NULL);
+  // IOSGraphicsStateGuardian *gsg = DCAST(IOSGraphicsStateGuardian, _gsg);
+  // backing_view = [[[GLKView alloc] initWithFrame:
+  //   CGRectMake(0, 0,_properties.get_x_size(), _properties.get_y_size())
+  //   context: gsg->context] retain];
 
-  CGRect bounds = [_gl_view bounds];
+  // CGRect bounds = [backing_view bounds];
 
-  _properties.set_size(bounds.size.width, bounds.size.height);
+  // _properties.set_size(bounds.size.width, bounds.size.height);
   _properties.set_foreground(true);
   _properties.set_minimized(false);
   _properties.set_open(true);

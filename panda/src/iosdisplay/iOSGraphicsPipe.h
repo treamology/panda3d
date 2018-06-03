@@ -51,9 +51,6 @@ protected:
                                          bool &precertify);
 
 public:
-  UIWindow *_window;
-  ControllerDemoViewController *_view_controller;
-
   typedef pset<IOSGraphicsWindow *> GraphicsWindows;
   GraphicsWindows _graphics_windows;
 

@@ -15,16 +15,18 @@
 #define IOSGRAPHICSSTATEGUARDIAN_H
 
 #include "pandabase.h"
-#include "glesgsg.h"
+#include "gles2gsg.h"
 
 #include "iOSGraphicsWindow.h"
+
+#import <GLKit/GLKit.h>
 
 class IOSGraphicsWindow;
 
 /**
  *
  */
-class IOSGraphicsStateGuardian : public GLESGraphicsStateGuardian {
+class IOSGraphicsStateGuardian : public GLES2GraphicsStateGuardian {
 public:
   IOSGraphicsStateGuardian(GraphicsEngine *engine, GraphicsPipe *pipe,
                               IOSGraphicsStateGuardian *share_with);
@@ -35,7 +37,7 @@ protected:
   virtual void *get_extension_func(const char *prefix, const char *name);
 
 private:
-  void describe_pixel_format(FrameBufferProperties &fb_props);
+  void props_from_glkview(FrameBufferProperties &fb_props, GLKView *glview);
 
   // We have to save a pointer to the GSG we intend to share texture context
   // with, since we don't create our own context in the constructor.
@@ -43,15 +45,16 @@ private:
 
 public:
   GLint _shared_buffer;
+  EAGLContext *context;
 
 public:
   static TypeHandle get_class_type() {
     return _type_handle;
   }
   static void init_type() {
-    GLESGraphicsStateGuardian::init_type();
+    GLES2GraphicsStateGuardian::init_type();
     register_type(_type_handle, "IOSGraphicsStateGuardian",
-                  GLESGraphicsStateGuardian::get_class_type());
+                  GLES2GraphicsStateGuardian::get_class_type());
   }
   virtual TypeHandle get_type() const {
     return get_class_type();

@@ -17,10 +17,11 @@
 #include "pandabase.h"
 #include "graphicsWindow.h"
 #include "buttonHandle.h"
-#include "glesgsg.h"
-#import "eaglView.h"
+#include "gles2gsg.h"
+// #import "eaglView.h"
 
 #import <UIKit/UIKit.h>
+#import <GLKit/GLKit.h>
 
 /**
  * An interface to the osx/ system for managing GL windows under X.
@@ -52,6 +53,7 @@ public:
   void touches_cancelled(NSSet *touches, UIEvent *event);
 
   CGPoint get_average_location(NSSet *touches);
+  GLKView *backing_view;
 
 
 protected:
@@ -64,7 +66,6 @@ private:
   void handle_button_delta(int num_touches);
 
 private:
-  EAGLView *_gl_view;
   int _last_buttons;
 
 public:
