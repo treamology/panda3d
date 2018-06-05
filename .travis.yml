@@ -13,8 +13,15 @@ env:
 - BUILD_METALIBS=OFF COMPOSITE_SOURCE_LIMIT=8
 - BUILD_METALIBS=ON COMPOSITE_SOURCE_LIMIT=0
 matrix:
+  exclude:
+    - os: osx
+      env: COMPOSITE_SOURCE_LIMIT=0
   include:
     - compiler: gcc
+    - os: osx
+      env: BUILD_METALIBS=ON COMPOSITE_SOURCE_LIMIT=8 \
+      COMPOSITE_SOURCE_EXCLUSIONS=p3showbase;p3dtoolutil;p3cocoadisplay;\
+      p3osxdisplay;p3tinydisplay;p3display
 
 addons:
   apt:
