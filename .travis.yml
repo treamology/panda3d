@@ -15,7 +15,7 @@ env:
 matrix:
   exclude:
     - os: osx
-      env: COMPOSITE_SOURCE_LIMIT=0
+      env: BUILD_METALIBS=ON COMPOSITE_SOURCE_LIMIT=0
   include:
     - compiler: gcc
     - os: osx
