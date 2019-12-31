@@ -478,6 +478,13 @@ ConfigVariableBool sync_video
           "cheesy estimate of scene complexity.  Some drivers may ignore "
           "this request."));
 
+ConfigVariableBool disable_message_loop
+("disable-message-loop", false,
+ PRC_DESC("If this is false, Panda will process messages from the Windows/macOS "
+          "message loop, which is required for normal operation.  You may set "
+          "this to true if some other UI framework (such as Tcl/Tk) needs "
+          "exclusive ownership of the message loop."));
+
 /**
  * Initializes the library.  This must be called at least once before any of
  * the functions or classes in this library can be used.  Normally it will be

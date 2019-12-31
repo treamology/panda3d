@@ -109,6 +109,8 @@ extern EXPCL_PANDA_DISPLAY ConfigVariableDouble pixel_zoom;
 extern EXPCL_PANDA_DISPLAY ConfigVariableColor background_color;
 extern EXPCL_PANDA_DISPLAY ConfigVariableBool sync_video;
 
+extern EXPCL_PANDA_DISPLAY ConfigVariableBool disable_message_loop;
+
 extern EXPCL_PANDA_DISPLAY void init_libdisplay();
 
 #endif /* CONFIG_DISPLAY_H */

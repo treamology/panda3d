@@ -3049,8 +3049,8 @@ class ShowBase(DirectObject.DirectObject):
 
         init_app_for_gui()
 
-        # Disable the Windows message loop, since Tcl wants to handle this all
-        # on its own.
+        # Disable the Windows/macOS message loop, since Tcl wants to handle
+        # this all on its own.
         ConfigVariableBool('disable-message-loop', False).value = True
 
         if ConfigVariableBool('tk-main-loop', True):

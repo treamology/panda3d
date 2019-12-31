@@ -311,6 +311,10 @@ void CocoaGraphicsWindow::
 process_events() {
   GraphicsWindow::process_events();
 
+  // We need to skip this step if some other framework (like Tkinter) assumes
+  // it has control over the event loop.
+  if (disable_message_loop) { return; }
+
   NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
   NSEvent *event = nil;
 
